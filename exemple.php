@@ -2,8 +2,8 @@
 
 require 'vendor/autoload.php';
 
-use MigrationTool\Rectifier\DataRectifier;
+use MigrationTool\Rectifier\EmailRectifier;
 
-$email = "james@gmail.fr";
-$new = DataRectifier::emailRectifier($email);
+$email = "james@tiscali.com";
+$new = EmailRectifier::emailRectifier($email);
 var_dump($new);

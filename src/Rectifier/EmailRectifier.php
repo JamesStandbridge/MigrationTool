@@ -6,7 +6,7 @@ use MigrationTool\Rectifier\Configuration\EmailDomains;
 use MigrationTool\Validator\DataValidator;
 use MigrationTool\Validator\Exception\InvalidEmail;
 
-class DataRectifier {
+class EmailRectifier {
 
 	public static function emailRectifier(string $email) : string
 	{
@@ -35,6 +35,9 @@ class DataRectifier {
 		for($i = 0; $i < count($exploded) - 1; $i++)
 			$newEmail .= $exploded[$i];
 
+		if(!strlen(explode('.', $extension)[0]) === 0)
+			$newEmail .= ".";
+		
 		return $newEmail.$extension;
 	}
 
