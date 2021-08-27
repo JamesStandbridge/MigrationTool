@@ -6,7 +6,7 @@ use MigrationTool\Rectifier\EmailRectifier;
 use MigrationTool\Rectifier\NameRectifier;
 
 $name = "STANDBRIDGEjames";
-$name2 = "Jean Paul Henry Standbridge";
+$name2 = "Jean-Baptiste PaulStandbridge Henry";
 //var_dump(NameRectifier::SEPARATE($name));
 var_dump(NameRectifier::SEPARATE($name2));
 /*

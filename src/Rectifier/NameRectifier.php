@@ -22,7 +22,6 @@ class NameRectifier {
 
 	private static function handleMultiPartValue(array $value) : array
 	{
-		var_dump($value);
 		$firstnames = Names::TO_ARRAY();
 
 		$mapping = [];
@@ -43,28 +42,30 @@ class NameRectifier {
 				$thereIsALastname = true;
 		}
 
-
 		$firstnames = "";
 		$lastnames = "";
+		$lastnameBarrier = false;
+		$composedNameBarrier = false;
+
 		if($thereIsALastname) {
 			foreach($mapping as $map) {
-				if($map['isFirstname']) 
+				if($map['isFirstname'] && !$lastnameBarrier && !$composedNameBarrier) {
 					$firstnames .= ucfirst(strtolower($map['part']))." ";
-				else
+					$isComposed = strpos($map['part'], "-") !== false;
+					if($isComposed)
+						$composedNameBarrier = true;
+				}
+				else {
 					$lastnames .= ucfirst(strtolower($map['part']))." ";
+					$lastnameBarrier = true;
+				}
 			}
 		} else {
-			if(count($mapping) > 1) {
-				foreach($mapping as $key => $map) {
-					if($key === 0) 
-						$lastnames .= ucfirst(strtolower($map['part']))." ";
-					else
-						$firstnames .= ucfirst(strtolower($map['part']))." ";
-				}
-			} else {
-				foreach($mapping as $map) {
+			foreach($mapping as $key => $map) {
+				if($key === 0 && count($mapping) > 1) 
+					$lastnames .= ucfirst(strtolower($map['part']))." ";
+				else
 					$firstnames .= ucfirst(strtolower($map['part']))." ";
-				}
 			}
 		}
 
