@@ -5,11 +5,11 @@ require 'vendor/autoload.php';
 use MigrationTool\Rectifier\EmailRectifier;
 use MigrationTool\Rectifier\NameRectifier;
 
-$name = "STANDBRIDGEjames";
-$name2 = "Jean-Baptiste PaulStandbridge Henry";
-//var_dump(NameRectifier::SEPARATE($name));
+$name = "JamesHenry";
+$name2 = "Jean-baptiste Standbridge Henry";
+var_dump(NameRectifier::SEPARATE($name));
 var_dump(NameRectifier::SEPARATE($name2));
-/*
-$email = "james@tiscali.com";
+
+$email = "james@gmail.fr";
 $new = EmailRectifier::emailRectifier($email);
-var_dump($new);*/
+var_dump($new);
