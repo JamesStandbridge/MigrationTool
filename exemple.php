@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 use MigrationTool\Rectifier\EmailRectifier;
 use MigrationTool\Rectifier\NameRectifier;
 
-$name = "CURAUDEAU MIREILLE";
+$name = "PAPROCKI KARINE";
 //$name2 = "Jean-baptiste Standbridge Henry";
 var_dump(NameRectifier::SEPARATE($name));
 //var_dump(NameRectifier::SEPARATE($name2));

@@ -40,10 +40,17 @@ class NameRectifier {
 
 
 		$thereIsALastname = false;
+		$thereIsAFirstname = false;
 		foreach($mapping as $map) {
 			if($map['isFirstname'] === false) 
 				$thereIsALastname = true;
+			else
+				$thereIsAFirstname = true;
 		}
+
+		//if no firstname, we set last slug to firstname
+		if(!$thereIsAFirstname)
+			$mapping[count($mapping) - 1]['isFirstname'] = true;
 
 		$firstnames = "";
 		$lastnames = "";
@@ -74,6 +81,8 @@ class NameRectifier {
 					$firstnames .= ucfirst(strtolower($map['part']))." ";
 			}
 		}
+
+
 
 		return array(
 			"firstname" => rtrim($firstnames),
