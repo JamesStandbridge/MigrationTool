@@ -28,6 +28,7 @@ class NameRectifier {
 		foreach($value as $part) 
 			$mapping[] = array('part' => $part, 'isFirstname' => false);
 
+
 		$matches = [];
 		foreach($firstnames as $firstname) {
 			for($i = 0; $i < count($mapping); $i++) {
@@ -35,6 +36,8 @@ class NameRectifier {
 					$mapping[$i]['isFirstname'] = true;
 			}
 		}
+
+
 
 		$thereIsALastname = false;
 		foreach($mapping as $map) {
@@ -49,7 +52,9 @@ class NameRectifier {
 
 		if($thereIsALastname) {
 			foreach($mapping as $map) {
+				var_dump($map);
 				if($map['isFirstname'] && !$lastnameBarrier && !$composedNameBarrier) {
+
 					$firstnames .= ucfirst(strtolower($map['part']))." ";
 					$isComposed = strpos($map['part'], "-") !== false;
 					if($isComposed)
@@ -57,7 +62,8 @@ class NameRectifier {
 				}
 				else {
 					$lastnames .= ucfirst(strtolower($map['part']))." ";
-					$lastnameBarrier = true;
+					if(strlen($firstnames) > 0)
+						$lastnameBarrier = true;
 				}
 			}
 		} else {
