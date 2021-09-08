@@ -59,7 +59,6 @@ class NameRectifier {
 
 		if($thereIsALastname) {
 			foreach($mapping as $map) {
-				var_dump($map);
 				if($map['isFirstname'] && !$lastnameBarrier && !$composedNameBarrier) {
 
 					$firstnames .= ucfirst(strtolower($map['part']))." ";
