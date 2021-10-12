@@ -85,7 +85,8 @@ class NameRectifier {
 
 		return array(
 			"firstname" => rtrim($firstnames),
-			"lastname" => rtrim($lastnames)
+			"lastname" => rtrim($lastnames),
+			"lastnameHasBeenFound" => $thereIsALastname
 		);
 	}
 
@@ -116,9 +117,17 @@ class NameRectifier {
 		else 
 			$lastname = substr($value, $best_matche["pos"] + strlen($best_matche["firstname"]), strlen($value) - 1);
 
+		$lastnameIsFirstname = false;
+		foreach($firstnames as $firstname) {
+			if(strtolower($lastname) === strtolower($firstname))
+				$lastnameIsFirstname = true;
+		}
+
+
 		return array(
 			"firstname" => ucfirst(strtolower($best_matche['firstname'])),
-			"lastname" => ucfirst(strtolower($lastname))
+			"lastname" => ucfirst(strtolower($lastname)),
+			"lastnameHasBeenFound" => !$lastnameIsFirstname
 		);
 	}
 
