@@ -16,11 +16,11 @@ class DataValidator {
 
 		switch(strlen($number_sanitized)) {
 			case 10:
-				$prefix = substr($number_sanitized, 0, 1);
+				$prefix = substr($number_sanitized, 0, 2);
 				return  $prefix === "06" || $prefix === "07";
 
 			case 11;
-				$prefix = substr($number_sanitized, 0, 2);
+				$prefix = substr($number_sanitized, 0, 3);
 				return  $prefix === "336" || $prefix === "337";
 
 			default:
