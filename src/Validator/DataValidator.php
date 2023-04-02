@@ -12,20 +12,8 @@ class DataValidator {
 
 	public static function isPhoneNumberValid(string $phonenumber) : bool
 	{
-		$number_sanitized = self::sanitize($phonenumber);
-
-		switch(strlen($number_sanitized)) {
-			case 10:
-				$prefix = substr($number_sanitized, 0, 2);
-				return  $prefix === "06" || $prefix === "07";
-
-			case 11;
-				$prefix = substr($number_sanitized, 0, 3);
-				return  $prefix === "336" || $prefix === "337";
-
-			default:
-				return false;
-		}
+		//check if phonenumber is a valid cell phone number
+        return preg_match('/^\+33[0-9]{9}$/', $phonenumber);
 	}
 
 	private static function sanitize(string $string) : string
