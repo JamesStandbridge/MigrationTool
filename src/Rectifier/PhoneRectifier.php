@@ -15,7 +15,7 @@ class PhoneRectifier
         //replace 0 by +33
         $number = preg_replace('/^0/', '+33', $number);
         //make sure the new number is a valid cellphone number
-        if(DataValidator::isPhoneNumberValid($number)) {
+        if(!DataValidator::isPhoneNumberValid($number)) {
             throw new InvalidPhoneNumber('Invalid phone number');
         }
 
